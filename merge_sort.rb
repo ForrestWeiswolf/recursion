@@ -1,5 +1,16 @@
 def merge_sort(list)
+	len = list.size
+	if len <= 1
+		return list
+	else
+		first = list[0...(len/2)]
+		first = merge_sort(first)
 
+		second = list[(len/2)..-1]
+		second = merge_sort(second)
+
+		return merge(first, second)
+	end
 end
 
 def merge(first, second)
@@ -13,8 +24,8 @@ def merge(first, second)
 			second = second[1..-1]
 		end
 	end
-	result << first + second
+	result = result + first + second
 	return result
 end
 
-puts merge([1, 2, 4, 8], [3, 5, 6, 7])
+puts merge_sort([7, 6, 7, 12, 67, 63, 112, 0, 4, -2, 011])
